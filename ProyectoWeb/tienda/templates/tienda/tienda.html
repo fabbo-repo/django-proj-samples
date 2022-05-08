@@ -4,18 +4,26 @@
 
 {% block content %}
 
-<div class="row">
-    {% for producto in productos %}
-        <div class="col-md-3">
-            <div class="card" style="width: 100%; margin: 10px 50px;">
-                <img src="{{producto.imagen.url}}" class="card-img-top">
-                <div class="card-body">
-                    <h7 class="card-title">{{producto.nombre}}</h7>
-                    <p class="card-text">{{producto.precio}}&nbsp;€</p>
+<div class="container">
+    <div style="float: right;">
+        {% include "cesta/widget.html" %}
+    </div>
+    <div class="row">
+        {% for producto in productos %}
+            <div class="col-md-3">
+                <div class="card" style="width: 100%; margin: 30px auto;">
+                    <img src="{{producto.imagen.url}}" class="card-img-top">
+                    <div class="card-body">
+                        <h7 class="card-title">{{producto.nombre}}</h7>
+                        <p class="card-text">{{producto.precio}}&nbsp;€</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="{% url 'cesta:agregar' producto.id %}" class="btn btn-success">Agregar</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
 
 {% endblock  %}
