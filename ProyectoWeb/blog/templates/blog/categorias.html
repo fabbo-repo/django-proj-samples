@@ -28,14 +28,10 @@
 
     <section>
         <div style="width: 75%; margin: auto; text-align: center; color: white;">
-            Categorias:
-            {% for post in posts %}
-                {% for categoria in post.categorias.all %}
-                    <a href="{% url 'Categoria' categoria.id %}">
-                        {{categoria.nombre}}
-                    </a>&nbsp;&nbsp;&nbsp;
-                {% endfor %}
-            {% endfor %}
+            Categoria:&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'Categoria' categoria.id %}" class="link_categorias">
+                    {{categoria.nombre}}
+                </a>&nbsp;&nbsp;&nbsp;
         </div>
     </section>
 
