@@ -1,0 +1,17 @@
+{% extends 'ProyectoWebApp/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="contenedor_formulario">
+    <form action="" method="POST" style="text-align: center;">
+        {% csrf_token %} <!-- Esto es para la politica de csfr y evitar errores -->
+        <table style="color: white; margin: 30px auto;">
+            {{formulario.as_table}}
+        </table>
+        <input type="submit" value="Enviar" style="width: 150px;">
+    </form>
+</div>
+
+{% endblock  %}
