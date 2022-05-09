@@ -6,7 +6,13 @@
 
 <div class="container">
     <div style="float: right;">
-        {% include "cesta/widget.html" %}
+        {% if request.user.is_authenticated %}
+            {% include "cesta/widget.html" %}
+        {% else %}
+            <div class="alert alert-danger text-center">
+                Login para ver cesta
+            </div>
+        {% endif %}
     </div>
     <div class="row">
         {% for producto in productos %}

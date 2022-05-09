@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+# CUSTOM IMPORT
+from django.contrib.messages import constants as err_msg
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,7 +45,9 @@ INSTALLED_APPS = [
     'blog',
     'contacto',
     'tienda',
-    'cesta_tienda'
+    'cesta_tienda',
+    'autenticacion',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -114,11 +118,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Admin panel language:
 #LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'es-eu'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
 
@@ -141,3 +142,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #EMAIL_POST=587
 #EMAIL_HOST_USER="prueba@gmail.com"
 #EMAIL_HOST_PASSWORD="..."
+
+# CONFIG to load crispy with bootstrap
+CRISPY_TEMPLATE_PACK='bootstrap4'
+
+# CONFIG to messages tags
+MESSAGE_TAGS={
+    err_msg.DEBUG: 'debug',
+    err_msg.INFO: 'info',
+    err_msg.SUCCESS: 'success',
+    err_msg.WARNING: 'warning',
+    err_msg.ERROR: 'danger',
+}

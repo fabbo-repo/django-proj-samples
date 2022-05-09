@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from cesta_tienda.cesta_tienda import Cesta
 
-def home(requests):
-    return render(requests, "ProyectoWebApp/home.html")
+def home(request):
+    Cesta(request)
+    return render(request, "ProyectoWebApp/home.html")
