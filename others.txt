@@ -1,1 +1,0 @@
-https://github.com/lucianolivares/Django-Tutorial/tree/Tutorial-4
