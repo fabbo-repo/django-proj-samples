@@ -128,4 +128,5 @@ dmypy.json
 .pyre/
 
 database
-google-cloud/app
+*.sqlite3
+*/media/blog
