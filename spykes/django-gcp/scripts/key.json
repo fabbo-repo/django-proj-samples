@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "qwiklabs-gcp-03-799afae642a8",
+  "private_key_id": "0354905ecbbccbd1a0973fcd0bfbb35eccf8e030",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDNmZHQKRxELyOm\ni6fEZgSMMeqHte8I9gV7e0zkfnhRet0E9jZlpf0ZBBAmrcAbH5JkgQhelUaERKy2\nOTVH2M+xBoHLA9NCldn3enG01HSsuC7EYY6G6NYE1YQ3V82OiROyvznzmzUilUZ3\nahAkq9Ru9TW3mXI4+KvedtNHRkeWTKnM7d6TLAyudJmGYKSY0+9BJDPSU7VvJQzh\nlvcoccY8ny8h3S9RRH5vqKFkMjcrZlfEKBR0lrBBdPX8BEaD2y3c78M7ZIa5hpnX\nlBEFtdYloK2l/e3aBVBE6GonVGxWO6jOx4OGh1ViGdybCA0nhgoB7JZSuUigPrsS\nPxov8DN3AgMBAAECggEAQ2BxRXtDdSDRmRGpQBaCpQLyrdi0ZgZh046bq0G64lDW\nP3sEZplX8SvAszw7eWgGTINwn7ZhrpTm2Ky0xj/KCGRugn5VbDu5e32X57+8IKIX\nSWoDEDkbcega9RwEFBLd7rT2I9wYNKYgup96fNoGuvoGyY0yvnLXuAbOxEvGx/zv\nNWiXaS05Ux4946HHtzzhARfltS9Q+xLb6QqfYAE8XMNIWhU5XQYoARrMeJ5iBorJ\nK7u3dYKNdShezKw9H6JVhKqUj+Zuwd5ArrmthJCSqvFGjUaS7LRA2zUxJZnCm9UP\nBG07jcuFmyNz4BC/yktyYbj6pj79m3Z2ion5d2Jn8QKBgQDsTStm2QrhimHmaKEe\nlhjLs+/MZUqfxfiJTMtxmCLBAN8evKp3uJAAeBhn/qsYz3MIbPt97apehrk5y5n4\ni6tsfajr82+4rqGWAMSQYd8FIEqNl8MPo8gzZFnxmbnIkgmdCjLSF+Obn6j2Ek4e\nrf/KsFKkv+LxzckOZ+p9oYvnXwKBgQDevTVN84Dp6X4k3h/j7Q3JkePso8tfzAFX\nRtuDVtMQFJMHqmvIlEPEUG1jTSdZCngrrrO7SOeWZwXsjASVg2EyUtHGSixkAEYk\nbYsLayLKQZdhPO4RGxVdoa3sP51IjLB027zmCJsUO/xcdjISe9J0OnkHYk3ueK3v\nf86DuSAi6QKBgQCsBT2MQIKAT/oW/qIUHxZr7FCsTiy2BSt54DLWPfdG43iJ6rR6\nNRx3ivXRdv5dMF/AiX3HXaXB7HeY0FQFMMAZWZ0IL45sNoyhI2v045q0I57CVvGE\nSCms5+fmTo+FqHJhJRR8BzIFj4Qzpn3CLc7hYdy33Iy8lJ9B4no8/MZZJwKBgAV9\nJiYgnQmmnlwsOR71xYQ1GyfGtYlLzrCm51vqNNNNnn3u3i8YMD9TOA7dZN3V2zZA\nXN99oW9cZJH6tVY14ZxK3C6Fv2hLdW8KYAXNAxN24FMeHEPBphojlNSgkLCr/uEy\nVQpaJfAutj5VD1DTSlFg64CaFI+O28JuJNmsIzWZAoGAIfXOFwbo9igbHwWFfHee\nj68QUOK9wJcKE2sMMAxFT/O76T/06P72Z/FtYBVeWGhD0pJC2CwQ47BgIh86cswG\nAbUuR1jSgmWdlqXunRhgmmoLa3uqdG6mYROZCdlonFLDWzlIw791sqBNLYihqp0g\nFEurZydvLXhi9llAI3de7lQ=\n-----END PRIVATE KEY-----\n",
+  "client_email": "djano-app-web@qwiklabs-gcp-03-799afae642a8.iam.gserviceaccount.com",
+  "client_id": "108404984359863134489",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/djano-app-web%40qwiklabs-gcp-03-799afae642a8.iam.gserviceaccount.com"
+}

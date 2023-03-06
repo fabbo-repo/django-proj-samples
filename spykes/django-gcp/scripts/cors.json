@@ -1,0 +1,10 @@
+[
+    {
+      "origin": [
+        "https://django-app-web-wpqzv2re4q-uc.a.run.app"
+      ],
+      "responseHeader": ["x-meta-goog-custom"],
+      "method": ["GET"],
+      "maxAgeSeconds": 3600
+    }
+]
