@@ -1,0 +1,33 @@
+django==4.0.9
+# Extra template components
+django-crispy-forms==2.0
+# Environment variables library
+django-environ==0.9.0
+# Multiple configurations inside one setting
+django-configurations[cache,database,email,search]==2.4
+# Cors
+django-cors-headers==3.13.0
+# Image library
+Pillow==9.4.0
+# Celery driver
+celery==5.2.7
+# Celery task result models
+django-celery-results==2.4.0
+# Celery periodic task models
+django-celery-beat==2.3.0
+# Redis driver
+redis==4.5.1
+# Concurrent networking library for Celery
+eventlet==0.33.3
+# Postgres driver
+psycopg2-binary==2.9.5
+# Testing coverage
+coverage==6.4.4
+# Web scrapping
+beautifulsoup4==4.11.1
+# Backup library
+django-dbbackup==4.0.2
+# Web server
+gunicorn==20.1.0
+# Brute-force attack blocking
+django-axes==5.40.1
