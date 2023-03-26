@@ -4,6 +4,7 @@ import os
 import environ
 from django.utils.translation import gettext_lazy as _
 from django.core.management.utils import get_random_secret_key
+from cryptography.fernet import Fernet
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,10 +29,33 @@ env = environ.Env(
 
 
 class Dev(Configuration):
-    # SECURITY WARNING: keep the secret key used in production secret!
-    SECRET_KEY = get_random_secret_key()
 
     DEBUG = env('APP_DEBUG')
+    
+    # SECRET key setup
+    secret_key_file = os.path.join(BASE_DIR, 'secret.key')
+    if os.path.exists(secret_key_file):
+        print("* Using SECRET key from file")
+        with open(secret_key_file, 'r') as reader:
+            SECRET_KEY = reader.read()
+    else:
+        print("* Generating SECRET key")
+        SECRET_KEY = get_random_secret_key()
+        with open(secret_key_file, 'w') as writer:
+            print("* Generating SECRET key file")
+            writer.write(SECRET_KEY)
+    # FERNET key setup
+    fernet_key_file = os.path.join(BASE_DIR, 'fernet.key')
+    if os.path.exists(fernet_key_file):
+        print("* Using FERNET key from file")
+        with open(fernet_key_file, 'r') as reader:
+            FERNET_KEY = reader.read()
+    else:
+        print("* Generating FERNET key")
+        FERNET_KEY = Fernet.generate_key().decode('utf-8')
+        with open(fernet_key_file, 'w') as writer:
+            print("* Generating FERNET key file")
+            writer.write(FERNET_KEY)
 
     ALLOWED_HOSTS = env('APP_ALLOWED_HOSTS').split(',')
     if env('APP_CORS_HOSTS'):
@@ -58,6 +82,7 @@ class Dev(Configuration):
         'axes',
         # Custom apps
         'core',
+        'user'
     ]
 
     MIDDLEWARE = [
@@ -94,14 +119,20 @@ class Dev(Configuration):
         },
     ]
 
+    AUTH_USER_MODEL = "user.AppUser"
+
     AUTHENTICATION_BACKENDS = [
         # AxesStandaloneBackend should be the first backend.
+        # (Brute force auth prevention)
         'axes.backends.AxesStandaloneBackend',
 
         # Django ModelBackend is the default authentication backend.
         'django.contrib.auth.backends.ModelBackend',
     ]
 
+    # AXES setup
+    AXES_ENABLED = True
+    AXES_FAILURE_LIMIT = 5
     # Inactivity period for failed login attempts (hours)
     AXES_COOLOFF_TIME = 24
 
@@ -183,11 +214,4 @@ class Dev(Configuration):
     # Template pack for django crispy application
     CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-    # Backup
-    DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
-    DBBACKUP_STORAGE_OPTIONS = {'location': '.'}
-
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-    CELERY_RESULT_BACKEND = "django-db"
-    CELERY_BROKER_URL = env("APP_CELERY_BROKER_URL")
