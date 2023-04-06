@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.hashers import make_password
-from user.cryptography import decrypt_data, encrypt_data
+from core.cryptography import encrypt_data
+from django.core.validators import MinLengthValidator
 
 
 class Nationality(models.Model):
@@ -23,6 +24,23 @@ class Nationality(models.Model):
 
 
 class AppUser(AbstractUser):
+    first_name = models.CharField(
+        _("first name"),
+        max_length=150,
+        help_text=_(
+            "Maximum 150 characters and minimum 1 character."
+        ),
+        validators=[MinLengthValidator(1)],
+    )
+    last_name = models.CharField(
+        _("last name"),
+        max_length=150,
+        help_text=_(
+            "Maximum 150 characters and minimum 1 character."
+        ),
+        validators=[MinLengthValidator(1)],
+    )
+    email = models.EmailField(_("email address"))
     nationality = models.ForeignKey(
         Nationality, on_delete=models.DO_NOTHING,
         verbose_name=_("nationality"),
@@ -74,6 +92,3 @@ class Student(AppUser):
         self.is_superuser = False
         self.dni = encrypt_data(self.dni)
         super(Student, self).save(*args, **kwargs)
-
-    def get_dni(self):
-        return decrypt_data(self.dni)

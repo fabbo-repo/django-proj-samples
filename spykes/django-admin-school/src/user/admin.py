@@ -1,11 +1,15 @@
 from django.contrib import admin
+from practices.admin import PracticeStudentInline
 from user.models import Student, Employee, Nationality
+from vacations.admin import VacationsInline
 from django.contrib.auth.models import Group
+from django.utils.translation import gettext_lazy as _
 
 # Remove Groups from admin
 admin.site.unregister(Group)
 
 admin.site.register(Nationality)
+
 
 @admin.register(Employee)
 class EmployeeAdmin(admin.ModelAdmin):
@@ -14,8 +18,6 @@ class EmployeeAdmin(admin.ModelAdmin):
         'email',
         'first_name',
         'last_name',
-        'date_joined',
-        'last_login',
         'nationality',
         'extra',
     )
@@ -26,6 +28,9 @@ class EmployeeAdmin(admin.ModelAdmin):
     list_display = (
         'username',
     )
+    inlines = (
+        VacationsInline,
+    )
 
     def get_fieldsets(self, request, obj=None):
         """
@@ -33,9 +38,11 @@ class EmployeeAdmin(admin.ModelAdmin):
         """
         fieldsets = super().get_fieldsets(request, obj=obj)
         if not obj:
-            fieldsets += (('Password', {'fields': ('password',)}),)
+            fieldsets += ((_('Password'), {'fields': ('password',)}),)
         else:
-            print(obj)
+            fieldsets += ((
+                _('Authentication'),
+                {'fields': ('date_joined', 'last_login',)}),)
         return fieldsets
 
 
@@ -46,8 +53,6 @@ class StudentAdmin(admin.ModelAdmin):
         'email',
         'first_name',
         'last_name',
-        'date_joined',
-        'last_login',
         'nationality',
         'dni',
     )
@@ -58,11 +63,15 @@ class StudentAdmin(admin.ModelAdmin):
     list_display = (
         'username',
     )
+    inlines = [PracticeStudentInline]
 
     def get_fieldsets(self, request, obj=None):
         """
         Remove the password field from the displayed fields
         """
         fieldsets = super().get_fieldsets(request, obj=obj)
-        if obj: obj.dni = obj.get_dni()
+        if obj:
+            fieldsets += ((
+                _('Authentication'),
+                {'fields': ('date_joined', 'last_login',)}),)
         return fieldsets

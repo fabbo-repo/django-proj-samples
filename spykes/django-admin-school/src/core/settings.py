@@ -82,7 +82,9 @@ class Dev(Configuration):
         'axes',
         # Custom apps
         'core',
-        'user'
+        'user',
+        'practices',
+        'vacations'
     ]
 
     MIDDLEWARE = [
