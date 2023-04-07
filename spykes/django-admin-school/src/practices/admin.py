@@ -14,4 +14,12 @@ class PracticeStudentInline(admin.StackedInline):
 
 @admin.register(Practice)
 class PracticeAdmin(admin.ModelAdmin):
+    list_filter = (
+        'area',
+        'init_date',
+        'end_date',
+    )
+    search_fields = (
+        'name',
+    )
     inlines = [PracticeStudentInline]

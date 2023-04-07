@@ -27,6 +27,18 @@ class EmployeeAdmin(admin.ModelAdmin):
     )
     list_display = (
         'username',
+        'first_name',
+        'last_name',
+        'email',
+    )
+    list_filter = (
+        'nationality',
+    )
+    search_fields = (
+        'username', 
+        'email',
+        'first_name',
+        'last_name',
     )
     inlines = (
         VacationsInline,
@@ -62,6 +74,19 @@ class StudentAdmin(admin.ModelAdmin):
     )
     list_display = (
         'username',
+        'first_name',
+        'last_name',
+        'email',
+    )
+    list_filter = (
+        'nationality',
+    )
+    search_fields = (
+        'username', 
+        'email',
+        'first_name',
+        'last_name',
+        'dni',
     )
     inlines = [PracticeStudentInline]
 
