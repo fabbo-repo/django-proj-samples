@@ -135,6 +135,8 @@ class Dev(Configuration):
     # AXES setup
     AXES_ENABLED = True
     AXES_FAILURE_LIMIT = 5
+    AXES_RESET_ON_SUCCESS = True
+    AXES_LOCK_OUT_BY_COMBINATION_USER_AND_IP = True
     # Inactivity period for failed login attempts (hours)
     AXES_COOLOFF_TIME = 24
 

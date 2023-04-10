@@ -1,14 +1,35 @@
 from django.contrib import admin
 from practices.admin import PracticeStudentInline
-from user.models import Student, Employee, Nationality
+from user.models import Student, Employee, Nationality, AppUser
 from vacations.admin import VacationsInline
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import AnonymousUser
 from django.utils.translation import gettext_lazy as _
 
-# Remove Groups from admin
-admin.site.unregister(Group)
-
 admin.site.register(Nationality)
+
+
+@admin.register(AppUser)
+class AppUserAdmin(admin.ModelAdmin):
+    fields = (
+        'username',
+        'email',
+        'first_name',
+        'last_name',
+        'nationality',
+        'is_active',
+        'is_staff',
+        'is_superuser',
+        'user_permissions',
+        'groups',
+    )
+    filter_horizontal = (
+        'user_permissions',
+        'groups',
+    )
+
+    def has_view_permission(self, request, obj=None):
+        if request.user.is_superuser: return True
+        return False
 
 
 @admin.register(Employee)
@@ -35,7 +56,7 @@ class EmployeeAdmin(admin.ModelAdmin):
         'nationality',
     )
     search_fields = (
-        'username', 
+        'username',
         'email',
         'first_name',
         'last_name',
@@ -55,6 +76,18 @@ class EmployeeAdmin(admin.ModelAdmin):
             fieldsets += ((
                 _('Authentication'),
                 {'fields': ('date_joined', 'last_login',)}),)
+        if request.user and not request.user is AnonymousUser \
+                and request.user.is_superuser:
+            permission_fields = (
+                'is_active',
+                'is_staff',
+                'is_superuser',
+                'user_permissions',
+            )
+            fieldsets += ((
+                _('Permissions'),
+                {'fields': permission_fields}),)
+            self.filter_horizontal += ('user_permissions',)
         return fieldsets
 
 
@@ -82,7 +115,7 @@ class StudentAdmin(admin.ModelAdmin):
         'nationality',
     )
     search_fields = (
-        'username', 
+        'username',
         'email',
         'first_name',
         'last_name',

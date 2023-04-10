@@ -1,9 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, UserManager
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.hashers import make_password
-from core.cryptography import encrypt_data
 from django.core.validators import MinLengthValidator
+from django.contrib.auth.models import Group
 
 
 class Nationality(models.Model):
@@ -22,6 +22,9 @@ class Nationality(models.Model):
     def __str__(self) -> str:
         return str(self.nationality)
 
+
+class AppUserManager(UserManager):
+    pass
 
 class AppUser(AbstractUser):
     first_name = models.CharField(
@@ -47,6 +50,11 @@ class AppUser(AbstractUser):
         blank=False,
         null=True
     )
+    
+    objects = AppUserManager()
+
+    def __str__(self):
+        return self.username
 
 
 class Employee(AppUser):
@@ -62,9 +70,8 @@ class Employee(AppUser):
         ordering = ['-date_joined']
 
     def save(self, *args, **kwargs):
-        self.password = make_password(self.password)
-        self.is_staff = True
-        self.is_superuser = False
+        if self.password:
+            self.password = make_password(self.password)
         super(Employee, self).save(*args, **kwargs)
 
     def __str__(self) -> str:
@@ -87,8 +94,6 @@ class Student(AppUser):
         return str(self.username)
 
     def save(self, *args, **kwargs):
-        self.password = make_password(self.password)
-        self.is_staff = False
-        self.is_superuser = False
-        self.dni = encrypt_data(self.dni)
+        if self.password:
+            self.password = make_password(self.password)
         super(Student, self).save(*args, **kwargs)
