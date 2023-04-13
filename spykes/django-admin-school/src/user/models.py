@@ -2,9 +2,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.hashers import make_password
-from django.core.validators import MinLengthValidator
+from django.core.validators import MinLengthValidator,MaxLengthValidator
 from django.contrib.auth.models import Group
-
+from django.utils import timezone
 
 class Nationality(models.Model):
     nationality = models.CharField(
@@ -50,6 +50,19 @@ class AppUser(AbstractUser):
         blank=False,
         null=True
     )
+
+    start_date = models.DateField(
+        verbose_name=_('start date'),
+        default=timezone.now,
+    )
+
+    dni = models.CharField(
+        primary_key=True,
+        max_length=20,
+        help_text=_(
+            "Introduce your document id"
+        )
+    )
     
     objects = AppUserManager()
 
@@ -58,9 +71,31 @@ class AppUser(AbstractUser):
 
 
 class Employee(AppUser):
-    extra = models.CharField(
-        verbose_name=_('extra'),
-        max_length=40
+    #vacation = models.ForeignKey(
+    #    Vacation,
+    #    on_delete=models.DO_NOTHING,
+    #    verbose_name=_("vacation"),
+    #    null=True,
+    #    blank=True,
+    #)
+
+    vacation_days = models.IntegerField(
+        _("vacation days"),
+        default=0,
+        help_text=_("Number of vacation days available"),
+        blank=True
+    )
+
+    bank_account = models.CharField(
+        _("bank account"),
+        max_length=34,
+        validators=[
+            MinLengthValidator(15),
+            MaxLengthValidator(34),
+        ],
+        help_text=_("The IBAN should have between 15 and 34 characters."),
+        blank=True,
+        null=True,
     )
 
     class Meta:
@@ -79,10 +114,31 @@ class Employee(AppUser):
 
 
 class Student(AppUser):
-    dni = models.CharField(
-        verbose_name=_('dni'),
-        max_length=200
+
+    passport = models.CharField(
+        max_length=50,
+        unique=True,
+        null=True,
+        blank=True,
+        verbose_name=_('passport'),
+        help_text= _("Passport document")
     )
+
+    course_code = models.CharField(
+        max_length=50,
+        null=True,
+        blank=True,
+        verbose_name=_('course code'),
+        help_text=_("Code of the course enrolled")
+    )
+
+    #residence = models.ForeignKey(
+    #    Residence,
+    #    on_delete=models.DO_NOTHING,
+    #    null=True,
+    #    blank=True,
+    #    verbose_name=_('residence')
+    #)
 
     class Meta:
         verbose_name = _('Student')
