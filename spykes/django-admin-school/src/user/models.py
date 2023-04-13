@@ -53,15 +53,14 @@ class AppUser(AbstractUser):
 
     start_date = models.DateField(
         verbose_name=_('start date'),
-        default=timezone.now,
+        null=True,
+        blank=True
     )
 
     dni = models.CharField(
+        verbose_name=_('dni'),
         primary_key=True,
-        max_length=20,
-        help_text=_(
-            "Introduce your document id"
-        )
+        max_length=200,
     )
     
     objects = AppUserManager()
@@ -71,24 +70,17 @@ class AppUser(AbstractUser):
 
 
 class Employee(AppUser):
-    #vacation = models.ForeignKey(
-    #    Vacation,
-    #    on_delete=models.DO_NOTHING,
-    #    verbose_name=_("vacation"),
-    #    null=True,
-    #    blank=True,
-    #)
 
     vacation_days = models.IntegerField(
         _("vacation days"),
         default=0,
-        help_text=_("Number of vacation days available"),
+        help_text=_("Number of available vacation days"),
         blank=True
     )
 
     bank_account = models.CharField(
         _("bank account"),
-        max_length=34,
+        max_length=200,
         validators=[
             MinLengthValidator(15),
             MaxLengthValidator(34),
@@ -116,12 +108,11 @@ class Employee(AppUser):
 class Student(AppUser):
 
     passport = models.CharField(
-        max_length=50,
+        max_length=500,
         unique=True,
         null=True,
         blank=True,
         verbose_name=_('passport'),
-        help_text= _("Passport document")
     )
 
     course_code = models.CharField(
@@ -129,16 +120,8 @@ class Student(AppUser):
         null=True,
         blank=True,
         verbose_name=_('course code'),
-        help_text=_("Code of the course enrolled")
+        help_text=_("Enrolled course code")
     )
-
-    #residence = models.ForeignKey(
-    #    Residence,
-    #    on_delete=models.DO_NOTHING,
-    #    null=True,
-    #    blank=True,
-    #    verbose_name=_('residence')
-    #)
 
     class Meta:
         verbose_name = _('Student')
