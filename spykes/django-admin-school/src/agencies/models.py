@@ -2,6 +2,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
+
+
 class Agency(models.Model):
     name = models.CharField(
         _('agency name'),
@@ -17,8 +19,8 @@ class Agency(models.Model):
 
     email = models.EmailField(blank=True, max_length=250)
 
-    commission = models.DecimalField(blank=True, max_digits=5, decimal_places=2)
-
+    commission = models.DecimalField(
+        blank=True, max_digits=5, decimal_places=2)
 
     class Meta:
         verbose_name = _('Agency')

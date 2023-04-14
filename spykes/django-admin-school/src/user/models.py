@@ -2,9 +2,10 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.hashers import make_password
-from django.core.validators import MinLengthValidator,MaxLengthValidator
+from django.core.validators import MinLengthValidator, MaxLengthValidator
 from django.contrib.auth.models import Group
 from django.utils import timezone
+
 
 class Nationality(models.Model):
     nationality = models.CharField(
@@ -25,6 +26,7 @@ class Nationality(models.Model):
 
 class AppUserManager(UserManager):
     pass
+
 
 class AppUser(AbstractUser):
     first_name = models.CharField(
@@ -62,7 +64,7 @@ class AppUser(AbstractUser):
         primary_key=True,
         max_length=200,
     )
-    
+
     objects = AppUserManager()
 
     def __str__(self):

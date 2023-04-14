@@ -3,13 +3,14 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
+
 class ResidenceOwner(models.Model):
     name = models.CharField(
         _('residence owner name'),
         primary_key=True,
         max_length=150
     )
-    contact = models.CharField( _('phone number'),blank=True, max_length=50)
+    contact = models.CharField(_('phone number'), blank=True, max_length=50)
     address = models.TextField(
         _('address'),
         blank=True,
@@ -29,6 +30,7 @@ class ResidenceOwner(models.Model):
     def __str__(self) -> str:
         return str(self.name)
 
+
 class ResidenceType(models.Model):
     SHARED_FLAT = 'SharedFlat'
     RESIDENCE = 'Residence'
@@ -46,6 +48,7 @@ class ResidenceType(models.Model):
 
     def __str__(self):
         return self.type
+
 
 class Residence(models.Model):
     name = models.CharField(
@@ -72,7 +75,6 @@ class Residence(models.Model):
         verbose_name=_('start date')
     )
 
-
     class Meta:
         verbose_name = _('Residence')
         verbose_name_plural = _('Residences')
@@ -80,4 +82,3 @@ class Residence(models.Model):
 
     def __str__(self) -> str:
         return str(self.name)
-
