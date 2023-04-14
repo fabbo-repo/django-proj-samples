@@ -54,8 +54,8 @@ class Practice(models.Model):
         verbose_name=_('address'),
         blank=True
     )
-    email = models.EmailField(, 
-        verbose_name=_('mail')
+    email = models.EmailField( 
+        verbose_name=_('mail'),
         max_length=254,
         blank=True
     )
