@@ -2,9 +2,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.hashers import make_password
-from django.core.validators import MinLengthValidator,MaxLengthValidator
+from django.core.validators import MinLengthValidator
 from django.contrib.auth.models import Group
-from django.utils import timezone
+
 
 class Nationality(models.Model):
     nationality = models.CharField(
@@ -50,18 +50,6 @@ class AppUser(AbstractUser):
         blank=False,
         null=True
     )
-
-    start_date = models.DateField(
-        verbose_name=_('start date'),
-        null=True,
-        blank=True
-    )
-
-    dni = models.CharField(
-        verbose_name=_('dni'),
-        primary_key=True,
-        max_length=200,
-    )
     
     objects = AppUserManager()
 
@@ -70,24 +58,9 @@ class AppUser(AbstractUser):
 
 
 class Employee(AppUser):
-
-    vacation_days = models.IntegerField(
-        _("vacation days"),
-        default=0,
-        help_text=_("Number of available vacation days"),
-        blank=True
-    )
-
-    bank_account = models.CharField(
-        _("bank account"),
-        max_length=200,
-        validators=[
-            MinLengthValidator(15),
-            MaxLengthValidator(34),
-        ],
-        help_text=_("The IBAN should have between 15 and 34 characters."),
-        blank=True,
-        null=True,
+    extra = models.CharField(
+        verbose_name=_('extra'),
+        max_length=40
     )
 
     class Meta:
@@ -106,21 +79,9 @@ class Employee(AppUser):
 
 
 class Student(AppUser):
-
-    passport = models.CharField(
-        max_length=500,
-        unique=True,
-        null=True,
-        blank=True,
-        verbose_name=_('passport'),
-    )
-
-    course_code = models.CharField(
-        max_length=50,
-        null=True,
-        blank=True,
-        verbose_name=_('course code'),
-        help_text=_("Enrolled course code")
+    dni = models.CharField(
+        verbose_name=_('dni'),
+        max_length=200
     )
 
     class Meta:
