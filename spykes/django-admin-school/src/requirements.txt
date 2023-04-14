@@ -31,5 +31,5 @@ django-dbbackup==4.0.2
 gunicorn==20.1.0
 # Brute-force attack blocking
 django-axes==5.40.1
-# Encription
-cryptography==39.0.1
+# Cryptography
+cryptography==40.0.1
