@@ -45,20 +45,7 @@ class Practice(models.Model):
     end_date = models.DateField(
         verbose_name=_('end date')
     )
-    contact = models.CharField(
-        verbose_name=_('contact number'),
-        max_length=50,
-        blank=True
-    )
-    address = models.TextField(
-        verbose_name=_('address'),
-        blank=True
-    )
-    email = models.EmailField(, 
-        verbose_name=_('mail')
-        max_length=254,
-        blank=True
-    )
+
     class Meta:
         verbose_name = _('Practice')
         verbose_name_plural = _('Practices')
