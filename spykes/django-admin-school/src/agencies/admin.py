@@ -4,4 +4,12 @@ from agencies.models import Agency
 # Register your models here.
 @admin.register(Agency)
 class AgencyAdmin(admin.ModelAdmin):
-    search_fields=('name')
+    list_display = (
+        'name',
+        'email',
+    )
+    search_fields=(
+        'name',
+        'email',
+        'web',
+    )

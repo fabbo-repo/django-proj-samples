@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
-# Create your models here.
+from user.models import Nationality
 
 
 class Agency(models.Model):
@@ -10,17 +9,30 @@ class Agency(models.Model):
         primary_key=True,
         max_length=50
     )
-    nationality = models.CharField(
-        _('nationality'),
-        blank=True,
-        max_length=50
+    nationality = models.ForeignKey(
+        Nationality, 
+        on_delete=models.DO_NOTHING,
+        verbose_name=_("nationality"),
+        blank=False,
+        null=True
     )
-    web = models.URLField(blank=True, max_length=200)
-
-    email = models.EmailField(blank=True, max_length=250)
-
+    email = models.EmailField(
+        _("email address"),
+        blank=True,
+        max_length=254
+    )
+    web = models.URLField(
+        _('web'),
+        blank=True,
+        max_length=200
+    )
     commission = models.DecimalField(
-        blank=True, max_digits=5, decimal_places=2)
+        _('commission'),
+        blank=True,
+        null=True,
+        max_digits=5,
+        decimal_places=2
+    )
 
     class Meta:
         verbose_name = _('Agency')

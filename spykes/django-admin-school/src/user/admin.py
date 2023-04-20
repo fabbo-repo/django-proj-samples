@@ -28,24 +28,25 @@ class AppUserAdmin(admin.ModelAdmin):
     )
 
     def has_view_permission(self, request, obj=None):
-        if request.user.is_superuser: return True
+        if request.user.is_superuser:
+            return True
         return False
 
 
 @admin.register(Employee)
 class EmployeeAdmin(admin.ModelAdmin):
-    fields = (
+    fields = [
         'username',
         'email',
         'first_name',
         'last_name',
+        'dni',
         'nationality',
-        'extra',
-    )
-    readonly_fields = (
+    ]
+    readonly_fields = [
         'date_joined',
-        'last_login'
-    )
+        'last_login',
+    ]
     list_display = (
         'username',
         'first_name',
@@ -73,6 +74,7 @@ class EmployeeAdmin(admin.ModelAdmin):
         if not obj:
             fieldsets += ((_('Password'), {'fields': ('password',)}),)
         else:
+            self.readonly_fields.append("username")
             fieldsets += ((
                 _('Authentication'),
                 {'fields': ('date_joined', 'last_login',)}),)
@@ -95,15 +97,16 @@ class EmployeeAdmin(admin.ModelAdmin):
 class StudentAdmin(admin.ModelAdmin):
     fields = (
         'username',
-        'email',
         'first_name',
         'last_name',
         'nationality',
         'dni',
+        'passport',
+        'course_code',
     )
     readonly_fields = (
         'date_joined',
-        'last_login'
+        'last_login',
     )
     list_display = (
         'username',

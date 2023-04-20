@@ -1,10 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.utils.translation import gettext_lazy as _
-from django.contrib.auth.hashers import make_password
 from django.core.validators import MinLengthValidator, MaxLengthValidator
-from django.contrib.auth.models import Group
-from django.utils import timezone
 
 
 class Nationality(models.Model):
@@ -24,10 +21,6 @@ class Nationality(models.Model):
         return str(self.nationality)
 
 
-class AppUserManager(UserManager):
-    pass
-
-
 class AppUser(AbstractUser):
     first_name = models.CharField(
         _("first name"),
@@ -45,41 +38,45 @@ class AppUser(AbstractUser):
         ),
         validators=[MinLengthValidator(1)],
     )
-    email = models.EmailField(_("email address"))
+    email = models.EmailField(
+        _("email address"),
+        max_length=254
+    )
     nationality = models.ForeignKey(
-        Nationality, on_delete=models.DO_NOTHING,
+        Nationality,
+        on_delete=models.DO_NOTHING,
         verbose_name=_("nationality"),
         blank=False,
         null=True
     )
-
     start_date = models.DateField(
         verbose_name=_('start date'),
         null=True,
         blank=True
     )
-
+    # Encrypted field
     dni = models.CharField(
         verbose_name=_('dni'),
         primary_key=True,
         max_length=200,
     )
 
-    objects = AppUserManager()
-
     def __str__(self):
         return self.username
 
 
-class Employee(AppUser):
+class AdminUser(AppUser):
+    pass
 
+
+class Employee(AppUser):
     vacation_days = models.IntegerField(
         _("vacation days"),
         default=0,
         help_text=_("Number of available vacation days"),
         blank=True
     )
-
+    # Encrypted field
     bank_account = models.CharField(
         _("bank account"),
         max_length=200,
@@ -87,28 +84,23 @@ class Employee(AppUser):
             MinLengthValidator(15),
             MaxLengthValidator(34),
         ],
-        help_text=_("The IBAN should have between 15 and 34 characters."),
+        help_text=_("IBAN should have between 15 and 34 characters."),
         blank=True,
         null=True,
     )
 
-    class Meta:
+    class Meta(AppUser.Meta):
         verbose_name = _('Employee')
         verbose_name_plural = _('Employees')
         # Greater to lower date
         ordering = ['-date_joined']
-
-    def save(self, *args, **kwargs):
-        if self.password:
-            self.password = make_password(self.password)
-        super(Employee, self).save(*args, **kwargs)
 
     def __str__(self) -> str:
         return str(self.username)
 
 
 class Student(AppUser):
-
+    # Encrypted field
     passport = models.CharField(
         max_length=500,
         unique=True,
@@ -116,16 +108,15 @@ class Student(AppUser):
         blank=True,
         verbose_name=_('passport'),
     )
-
     course_code = models.CharField(
+        verbose_name=_('course code'),
         max_length=50,
         null=True,
         blank=True,
-        verbose_name=_('course code'),
         help_text=_("Enrolled course code")
     )
 
-    class Meta:
+    class Meta(AppUser.Meta):
         verbose_name = _('Student')
         verbose_name_plural = _('Students')
         # Greater to lower date
@@ -133,8 +124,3 @@ class Student(AppUser):
 
     def __str__(self) -> str:
         return str(self.username)
-
-    def save(self, *args, **kwargs):
-        if self.password:
-            self.password = make_password(self.password)
-        super(Student, self).save(*args, **kwargs)

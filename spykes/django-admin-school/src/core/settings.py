@@ -85,8 +85,7 @@ class Dev(Configuration):
         'user',
         'practices',
         'vacations',
-        'residences',
-        'agencies'
+        'agencies',
     ]
 
     MIDDLEWARE = [
