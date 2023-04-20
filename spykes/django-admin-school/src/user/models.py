@@ -26,7 +26,7 @@ class AppUser(AbstractUser):
         _("first name"),
         max_length=150,
         help_text=_(
-            "Maximum 150 characters and minimum 1 character."
+            "Maximum 150 characters and minimum 1 character"
         ),
         validators=[MinLengthValidator(1)],
     )
@@ -34,7 +34,7 @@ class AppUser(AbstractUser):
         _("last name"),
         max_length=150,
         help_text=_(
-            "Maximum 150 characters and minimum 1 character."
+            "Maximum 150 characters and minimum 1 character"
         ),
         validators=[MinLengthValidator(1)],
     )
@@ -57,16 +57,11 @@ class AppUser(AbstractUser):
     # Encrypted field
     dni = models.CharField(
         verbose_name=_('dni'),
-        primary_key=True,
         max_length=200,
     )
 
     def __str__(self):
         return self.username
-
-
-class AdminUser(AppUser):
-    pass
 
 
 class Employee(AppUser):
@@ -84,7 +79,7 @@ class Employee(AppUser):
             MinLengthValidator(15),
             MaxLengthValidator(34),
         ],
-        help_text=_("IBAN should have between 15 and 34 characters."),
+        help_text=_("IBAN should have between 15 and 34 characters"),
         blank=True,
         null=True,
     )
@@ -103,7 +98,6 @@ class Student(AppUser):
     # Encrypted field
     passport = models.CharField(
         max_length=500,
-        unique=True,
         null=True,
         blank=True,
         verbose_name=_('passport'),

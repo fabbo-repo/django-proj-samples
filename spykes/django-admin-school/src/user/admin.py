@@ -15,12 +15,14 @@ class AppUserAdmin(admin.ModelAdmin):
         'email',
         'first_name',
         'last_name',
-        'nationality',
         'is_active',
         'is_staff',
         'is_superuser',
         'user_permissions',
         'groups',
+        'nationality',
+        'start_date',
+        'dni',
     )
     filter_horizontal = (
         'user_permissions',
@@ -42,6 +44,9 @@ class EmployeeAdmin(admin.ModelAdmin):
         'last_name',
         'dni',
         'nationality',
+        'start_date',
+        'vacation_days',
+        'bank_account',
     ]
     readonly_fields = [
         'date_joined',
@@ -74,7 +79,6 @@ class EmployeeAdmin(admin.ModelAdmin):
         if not obj:
             fieldsets += ((_('Password'), {'fields': ('password',)}),)
         else:
-            self.readonly_fields.append("username")
             fieldsets += ((
                 _('Authentication'),
                 {'fields': ('date_joined', 'last_login',)}),)
@@ -103,6 +107,7 @@ class StudentAdmin(admin.ModelAdmin):
         'dni',
         'passport',
         'course_code',
+        'start_date',
     )
     readonly_fields = (
         'date_joined',

@@ -27,8 +27,8 @@ def pre_save_employee(sender, instance, **kwargs):
     if not instance.pk:
         instance.is_staff = True
         instance.is_superuser = False
-    if instance.password:
-        instance.password = make_password(instance.password)
+        if instance.password:
+            instance.password = make_password(instance.password)
     if instance.dni:
         instance.dni = encrypt_data(instance.dni)
     if instance.bank_account:
@@ -40,8 +40,8 @@ def pre_save_student(sender, instance, **kwargs):
     if not instance.pk:
         instance.is_staff = False
         instance.is_superuser = False
-    if instance.password:
-        instance.password = make_password(instance.password)
+        if instance.password:
+            instance.password = make_password(instance.password)
     if instance.dni:
         instance.dni = encrypt_data(instance.dni)
     if instance.passport:

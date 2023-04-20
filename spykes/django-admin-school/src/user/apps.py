@@ -31,4 +31,4 @@ class UserConfig(AppConfig):
             for permmission_code in self.EMPLOYEE_DEFAULT_PERMISSIONS:
                 perm = Permission.objects.get(codename=permmission_code)
                 default_employee_group.permissions.add(perm)
-        except Exception: pass
+        except Exception as ex: print(ex)

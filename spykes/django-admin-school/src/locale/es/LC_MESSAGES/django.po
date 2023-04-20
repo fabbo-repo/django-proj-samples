@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-14 11:00+0100\n"
+"POT-Creation-Date: 2023-04-20 12:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,10 +18,190 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\core\settings.py:118
+#: .\agencies\models.py:8
+msgid "agency name"
+msgstr ""
+
+#: .\agencies\models.py:15 .\user\models.py:9 .\user\models.py:48
+msgid "nationality"
+msgstr ""
+
+#: .\agencies\models.py:20 .\user\models.py:42
+msgid "email address"
+msgstr ""
+
+#: .\agencies\models.py:25
+msgid "web"
+msgstr ""
+
+#: .\agencies\models.py:30
+msgid "commission"
+msgstr ""
+
+#: .\agencies\models.py:38
+msgid "Agency"
+msgstr ""
+
+#: .\agencies\models.py:39
+msgid "Agencies"
+msgstr ""
+
+#: .\core\settings.py:174
 msgid "English"
 msgstr "Inglés"
 
-#: .\core\settings.py:119
+#: .\core\settings.py:175
 msgid "Spanish"
 msgstr "Español"
+
+#: .\practices\models.py:8 .\practices\models.py:26
+msgid "practice area name"
+msgstr ""
+
+#: .\practices\models.py:15
+msgid "Practice Area"
+msgstr ""
+
+#: .\practices\models.py:16
+msgid "Practice Areas"
+msgstr ""
+
+#: .\practices\models.py:33
+msgid "practice area"
+msgstr ""
+
+#: .\practices\models.py:39
+msgid "students"
+msgstr ""
+
+#: .\practices\models.py:43 .\vacations\models.py:13
+msgid "init date"
+msgstr ""
+
+#: .\practices\models.py:46 .\vacations\models.py:16
+msgid "end date"
+msgstr ""
+
+#: .\practices\models.py:49
+msgid "contact number"
+msgstr ""
+
+#: .\practices\models.py:54
+msgid "address"
+msgstr ""
+
+#: .\practices\models.py:58
+msgid "mail"
+msgstr ""
+
+#: .\practices\models.py:63
+msgid "Practice"
+msgstr ""
+
+#: .\practices\models.py:64
+msgid "Practices"
+msgstr ""
+
+#: .\practices\models.py:75
+msgid "practice"
+msgstr ""
+
+#: .\practices\models.py:80
+msgid "student"
+msgstr ""
+
+#: .\user\admin.py:80
+msgid "Password"
+msgstr ""
+
+#: .\user\admin.py:83 .\user\admin.py:141
+msgid "Authentication"
+msgstr ""
+
+#: .\user\admin.py:94
+msgid "Permissions"
+msgstr ""
+
+#: .\user\models.py:15
+msgid "Nationality"
+msgstr ""
+
+#: .\user\models.py:16
+msgid "Nationalities"
+msgstr ""
+
+#: .\user\models.py:26
+msgid "first name"
+msgstr ""
+
+#: .\user\models.py:29 .\user\models.py:37
+msgid "Maximum 150 characters and minimum 1 character"
+msgstr ""
+
+#: .\user\models.py:34
+msgid "last name"
+msgstr ""
+
+#: .\user\models.py:53
+msgid "start date"
+msgstr ""
+
+#: .\user\models.py:59
+msgid "dni"
+msgstr ""
+
+#: .\user\models.py:69
+msgid "vacation days"
+msgstr ""
+
+#: .\user\models.py:71
+msgid "Number of available vacation days"
+msgstr ""
+
+#: .\user\models.py:76
+msgid "bank account"
+msgstr ""
+
+#: .\user\models.py:82
+msgid "IBAN should have between 15 and 34 characters"
+msgstr ""
+
+#: .\user\models.py:88
+msgid "Employee"
+msgstr ""
+
+#: .\user\models.py:89
+msgid "Employees"
+msgstr ""
+
+#: .\user\models.py:103
+msgid "passport"
+msgstr ""
+
+#: .\user\models.py:106
+msgid "course code"
+msgstr ""
+
+#: .\user\models.py:110
+msgid "Enrolled course code"
+msgstr ""
+
+#: .\user\models.py:114
+msgid "Student"
+msgstr ""
+
+#: .\user\models.py:115
+msgid "Students"
+msgstr ""
+
+#: .\vacations\models.py:9
+msgid "employee"
+msgstr ""
+
+#: .\vacations\models.py:20
+msgid "Vacation"
+msgstr ""
+
+#: .\vacations\models.py:21
+msgid "Vacations"
+msgstr ""
