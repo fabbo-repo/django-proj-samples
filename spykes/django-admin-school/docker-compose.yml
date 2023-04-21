@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+
+  django_admin_school:
+    build: .
+    container_name: django_admin_school
+    volumes:
+      - ./logs:/var/log/app
+      - ./keys:/keys
+      - ./certs:/certs:ro
+    depends_on:
+      - db
+    ports:
+      - "8070:443"
+    restart: unless-stopped
+    networks:
+      - django_admin_school_net
+
+  db:
+    image: postgres
+    env_file:
+      - ./postgres_db.env
+    ports:
+      - "31700:5432"
+    restart: unless-stopped
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    networks:
+      - django_admin_school_net
+
+  pgadmin:
+    image: dpage/pgadmin4
+    env_file:
+      - ./pgadmin.env
+    ports:
+      - "31750:80"
+    depends_on:
+      - db
+    restart: unless-stopped
+    networks:
+      - django_admin_school_net
+
+networks:
+  django_admin_school_net:
+    name: django_admin_school_net
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.168.11.0/24"
