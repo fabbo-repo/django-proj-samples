@@ -23,17 +23,17 @@ env = environ.Env(
         "APP_EMAIL_HOST_USER", default='example@gmail.com')),
     APP_EMAIL_HOST_PASSWORD=(str, os.getenv(
         "APP_EMAIL_HOST_PASSWORD", default='password')),
-    APP_CELERY_BROKER_URL=(str, os.getenv(
-        "APP_CELERY_BROKER_URL", default="redis://localhost:6379/0")),
+    APP_KEYS_DIR=(str, os.getenv("APP_KEYS_DIR", default="")),
 )
 
 
 class Dev(Configuration):
 
     DEBUG = env('APP_DEBUG')
-    
+
     # SECRET key setup
-    secret_key_file = os.path.join(BASE_DIR, 'secret.key')
+    secret_key_file = os.path.join(env('APP_KEYS_PATH'), 'secret.key') if env(
+        'APP_KEYS_PATH') else os.path.join(BASE_DIR, 'secret.key')
     if os.path.exists(secret_key_file):
         print("* Using SECRET key from file")
         with open(secret_key_file, 'r') as reader:
@@ -220,3 +220,64 @@ class Dev(Configuration):
     CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+class OnPremise(Dev):
+    DEBUG = False
+    WSGI_APPLICATION = 'core.wsgi.application'
+
+    # Security headers
+    CSRF_COOKIE_SECURE = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SESSION_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+
+    if os.path.exists('/var/log/app/app.log'):
+        print("* Using file log")
+        LOGGING = {
+            "version": 1,
+            "disable_existing_loggers": False,
+            "formatters": {
+                "verbose": {
+                    "format": "{levelname} {asctime} {module} {process:d} {thread:d} {message}",
+                    "style": "{",
+                },
+            },
+            "handlers": {
+                "logfile": {
+                    "class": "logging.FileHandler",
+                    "filename": "/var/log/api/app.log",
+                    "formatter": "verbose",
+                },
+            },
+            "root": {
+                "handlers": ["logfile"],
+                "level": "ERROR",
+            }
+        }
+    else:
+        print("* Using console log")
+        LOGGING = {
+            "version": 1,
+            "disable_existing_loggers": False,
+            "formatters": {
+                "verbose": {
+                    "format": "{levelname} {asctime} {module} {process:d} {thread:d} {message}",
+                    "style": "{",
+                },
+            },
+            "handlers": {
+                "console": {
+                    "class": "logging.StreamHandler",
+                    "stream": "ext://sys.stdout",
+                    "formatter": "verbose",
+                },
+            },
+            "root": {
+                "handlers": ["console"],
+                "level": "ERROR",
+            }
+        }
