@@ -32,8 +32,8 @@ class Dev(Configuration):
     DEBUG = env('APP_DEBUG')
 
     # SECRET key setup
-    secret_key_file = os.path.join(env('APP_KEYS_PATH'), 'secret.key') if env(
-        'APP_KEYS_PATH') else os.path.join(BASE_DIR, 'secret.key')
+    secret_key_file = os.path.join(env('APP_KEYS_DIR'), 'secret.key') if env(
+        'APP_KEYS_DIR') else os.path.join(BASE_DIR, 'secret.key')
     if os.path.exists(secret_key_file):
         print("* Using SECRET key from file")
         with open(secret_key_file, 'r') as reader:
@@ -249,7 +249,7 @@ class OnPremise(Dev):
             "handlers": {
                 "logfile": {
                     "class": "logging.FileHandler",
-                    "filename": "/var/log/api/app.log",
+                    "filename": "/var/log/app/app.log",
                     "formatter": "verbose",
                 },
             },

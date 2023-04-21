@@ -9,6 +9,8 @@ services:
       - ./logs:/var/log/app
       - ./keys:/keys
       - ./certs:/certs:ro
+    env_file:
+      - ./app.env
     depends_on:
       - db
     ports:

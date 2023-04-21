@@ -132,3 +132,4 @@ database
 */media/blog
 *.key
 *.pem
+*.env
