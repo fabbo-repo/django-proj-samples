@@ -76,11 +76,11 @@ msgstr "estudiantes"
 
 #: .\practices\models.py:43 .\vacations\models.py:13
 msgid "init date"
-msgstr "fecha inicio"
+msgstr "fecha de inicio"
 
 #: .\practices\models.py:46 .\vacations\models.py:16
 msgid "end date"
-msgstr "fecha fin"
+msgstr "fecha de fin"
 
 #: .\practices\models.py:49
 msgid "contact number"
@@ -92,7 +92,7 @@ msgstr "dirección"
 
 #: .\practices\models.py:58
 msgid "mail"
-msgstr "mail"
+msgstr "correo"
 
 #: .\practices\models.py:63
 msgid "Practice"
@@ -140,11 +140,11 @@ msgstr "Máximo 150 caracteres y mínimo 1 carácter"
 
 #: .\user\models.py:34
 msgid "last name"
-msgstr "Apellido"
+msgstr "apellidos"
 
 #: .\user\models.py:53
 msgid "start date"
-msgstr "Fecha inicio"
+msgstr "fecha de inicio"
 
 #: .\user\models.py:59
 msgid "dni"
@@ -180,11 +180,11 @@ msgstr "pasaporte"
 
 #: .\user\models.py:106
 msgid "course code"
-msgstr "código curso"
+msgstr "código de curso"
 
 #: .\user\models.py:110
 msgid "Enrolled course code"
-msgstr "Código curso enrolado"
+msgstr "Código de curso matriculado"
 
 #: .\user\models.py:114
 msgid "Student"
