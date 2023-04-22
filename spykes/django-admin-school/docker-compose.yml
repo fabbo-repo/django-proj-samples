@@ -1,6 +1,20 @@
 version: '3'
 
 services:
+  nginx:
+    build: nginx
+    ports:
+      - "8070:80"
+      - "8071:443"
+    volumes:
+      - ./src/static:/app/static
+      - ./logs/nginx:/var/log/nginx
+      - ./certs:/etc/nginx/ssl:ro
+    depends_on:
+      - django_admin_school
+    restart: unless-stopped
+    networks:
+      - django_admin_school_net
 
   django_admin_school:
     build: .
@@ -8,13 +22,12 @@ services:
     volumes:
       - ./logs:/var/log/app
       - ./keys:/keys
-      - ./certs:/certs:ro
     env_file:
       - ./app.env
     depends_on:
       - db
-    ports:
-      - "8070:443"
+    expose:
+      - 8000
     restart: unless-stopped
     networks:
       - django_admin_school_net
