@@ -1,0 +1,21 @@
+django
+# Extra template components
+django-crispy-forms
+# Environment variables library
+django-environ
+# Multiple configurations inside one setting
+django-configurations
+# Cors
+django-cors-headers
+# Image library
+Pillow
+# Postgres driver
+psycopg2-binary
+# Testing coverage
+coverage
+# Web server
+gunicorn
+# Brute-force attack blocking
+django-axes
+# Cryptography
+cryptography

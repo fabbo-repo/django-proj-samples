@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "django-admin-school"
+version = "0.1.0"
+description = ""
+authors = ["FabboMaster"]
+license = "Apache 2.0"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^4.2"
+django-crispy-forms = "^2.0"
+django-environ = "^0.10.0"
+django-configurations = "^2.4.1"
+django-cors-headers = "^3.14.0"
+Pillow = "^9.5.0"
+psycopg2-binary = "^2.9.6"
+coverage = "^7.2.3"
+gunicorn = "^20.1.0"
+django-axes = "^5.41.1"
+cryptography = "^40.0.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

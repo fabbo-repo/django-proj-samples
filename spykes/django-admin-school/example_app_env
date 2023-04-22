@@ -1,0 +1,3 @@
+APP_ALLOWED_HOSTS=localhost
+DATABASE_URL=postgres://pguser:password@db:5432/school
+APP_KEYS_DIR='/keys'
