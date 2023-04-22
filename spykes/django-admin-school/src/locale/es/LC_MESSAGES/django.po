@@ -20,31 +20,31 @@ msgstr ""
 
 #: .\agencies\models.py:8
 msgid "agency name"
-msgstr ""
+msgstr "nombre agencia"
 
 #: .\agencies\models.py:15 .\user\models.py:9 .\user\models.py:48
 msgid "nationality"
-msgstr ""
+msgstr "nacionalidad"
 
 #: .\agencies\models.py:20 .\user\models.py:42
 msgid "email address"
-msgstr ""
+msgstr "dirección correo"
 
 #: .\agencies\models.py:25
 msgid "web"
-msgstr ""
+msgstr "web"
 
 #: .\agencies\models.py:30
 msgid "commission"
-msgstr ""
+msgstr "comisión"
 
 #: .\agencies\models.py:38
 msgid "Agency"
-msgstr ""
+msgstr "Agencia"
 
 #: .\agencies\models.py:39
 msgid "Agencies"
-msgstr ""
+msgstr "Agencias"
 
 #: .\core\settings.py:174
 msgid "English"
@@ -56,152 +56,153 @@ msgstr "Español"
 
 #: .\practices\models.py:8 .\practices\models.py:26
 msgid "practice area name"
-msgstr ""
+msgstr "nombre área de práctica"
 
 #: .\practices\models.py:15
 msgid "Practice Area"
-msgstr ""
+msgstr "Área Práctica"
 
 #: .\practices\models.py:16
 msgid "Practice Areas"
-msgstr ""
+msgstr "Áreas Práctica"
 
 #: .\practices\models.py:33
 msgid "practice area"
-msgstr ""
+msgstr "área práctica "
 
 #: .\practices\models.py:39
 msgid "students"
-msgstr ""
+msgstr "estudiantes"
 
 #: .\practices\models.py:43 .\vacations\models.py:13
 msgid "init date"
-msgstr ""
+msgstr "fecha inicio"
 
 #: .\practices\models.py:46 .\vacations\models.py:16
 msgid "end date"
-msgstr ""
+msgstr "fecha fin"
 
 #: .\practices\models.py:49
 msgid "contact number"
-msgstr ""
+msgstr "número de contacto"
 
 #: .\practices\models.py:54
 msgid "address"
-msgstr ""
+msgstr "dirección"
 
 #: .\practices\models.py:58
 msgid "mail"
-msgstr ""
+msgstr "mail"
 
 #: .\practices\models.py:63
 msgid "Practice"
-msgstr ""
+msgstr "Práctica"
 
 #: .\practices\models.py:64
 msgid "Practices"
-msgstr ""
+msgstr "Prácticas"
 
 #: .\practices\models.py:75
 msgid "practice"
-msgstr ""
+msgstr "práctica"
 
 #: .\practices\models.py:80
 msgid "student"
-msgstr ""
+msgstr "estudiante"
 
 #: .\user\admin.py:80
 msgid "Password"
-msgstr ""
+msgstr "Constraseña"
 
 #: .\user\admin.py:83 .\user\admin.py:141
 msgid "Authentication"
-msgstr ""
+msgstr "Autenticación"
 
 #: .\user\admin.py:94
 msgid "Permissions"
-msgstr ""
+msgstr "Permisos"
 
 #: .\user\models.py:15
 msgid "Nationality"
-msgstr ""
+msgstr "Nacionalidad"
 
 #: .\user\models.py:16
 msgid "Nationalities"
-msgstr ""
+msgstr "Nacionalidades"
 
 #: .\user\models.py:26
 msgid "first name"
-msgstr ""
+msgstr "nombre"
 
 #: .\user\models.py:29 .\user\models.py:37
 msgid "Maximum 150 characters and minimum 1 character"
-msgstr ""
+msgstr "Máximo 150 caracteres y mínimo 1 carácter"
 
 #: .\user\models.py:34
 msgid "last name"
-msgstr ""
+msgstr "Apellido"
 
 #: .\user\models.py:53
 msgid "start date"
-msgstr ""
+msgstr "Fecha inicio"
 
 #: .\user\models.py:59
 msgid "dni"
-msgstr ""
+msgstr "dni"
 
 #: .\user\models.py:69
 msgid "vacation days"
-msgstr ""
+msgstr "días vacaciones"
 
 #: .\user\models.py:71
 msgid "Number of available vacation days"
-msgstr ""
+msgstr "Días de vacaciones disponibles"
 
 #: .\user\models.py:76
 msgid "bank account"
-msgstr ""
+msgstr "cuenta bancaria"
 
 #: .\user\models.py:82
 msgid "IBAN should have between 15 and 34 characters"
-msgstr ""
+msgstr "El IBAN tiene que tener entre 15 y 34 caracteres"
 
 #: .\user\models.py:88
 msgid "Employee"
-msgstr ""
+msgstr "Empleado"
 
 #: .\user\models.py:89
 msgid "Employees"
-msgstr ""
+msgstr "Empleados"
 
 #: .\user\models.py:103
 msgid "passport"
-msgstr ""
+msgstr "pasaporte"
 
 #: .\user\models.py:106
 msgid "course code"
-msgstr ""
+msgstr "código curso"
 
 #: .\user\models.py:110
 msgid "Enrolled course code"
-msgstr ""
+msgstr "Código curso enrolado"
 
 #: .\user\models.py:114
 msgid "Student"
-msgstr ""
+msgstr "Estudiante"
 
 #: .\user\models.py:115
 msgid "Students"
-msgstr ""
+msgstr "Estudiantes"
 
 #: .\vacations\models.py:9
 msgid "employee"
-msgstr ""
+msgstr "empleado"
 
 #: .\vacations\models.py:20
 msgid "Vacation"
-msgstr ""
+msgstr "Vacación"
 
 #: .\vacations\models.py:21
 msgid "Vacations"
-msgstr ""
+msgstr "Vacaciones"
+
