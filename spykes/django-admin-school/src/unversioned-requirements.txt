@@ -19,3 +19,5 @@ gunicorn
 django-axes
 # Cryptography
 cryptography
+# Pdf generation
+reportlab

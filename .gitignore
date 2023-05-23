@@ -133,3 +133,5 @@ database
 *.key
 *.pem
 *.env
+
+media/pdf1/*
