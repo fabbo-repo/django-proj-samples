@@ -19,7 +19,8 @@ chmod 777 /var/log/app/app.log
 echo "Checking migrations"
 python manage.py migrate --check || python manage.py migrate --no-input || exit 0
 
-# https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
+# http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
+# ANSI Shadow
 cat << "EOF"
 
 
